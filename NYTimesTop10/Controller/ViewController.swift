@@ -93,7 +93,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             cell.newsImage.sd_setIndicatorStyle(.gray)
             cell.newsImage.sd_setImage(with: imageURL)
             
-            cell.newsDescription.text = tempNews.title
+            cell.newsDescription.text = tempNews.abstract
             cell.newsDescription.numberOfLines = 10
             cell.newsDescription.lineBreakMode = NSLineBreakMode.byWordWrapping
             let temp_font = UIFont(name: "Helvetica", size: 15.0)

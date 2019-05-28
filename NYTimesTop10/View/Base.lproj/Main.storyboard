@@ -29,7 +29,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cSx-KC-D39">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cSx-KC-D39">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejI-NE-ze3">
@@ -55,6 +55,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="ejI-NE-ze3" secondAttribute="trailing" id="fFP-oA-8SB"/>
                                                 <constraint firstAttribute="trailing" secondItem="cSx-KC-D39" secondAttribute="trailing" id="ger-Vu-dq9"/>
                                                 <constraint firstItem="cSx-KC-D39" firstAttribute="top" secondItem="Vr1-xk-Vjf" secondAttribute="top" id="jqv-ya-ycT"/>
+                                                <constraint firstItem="ejI-NE-ze3" firstAttribute="top" secondItem="cSx-KC-D39" secondAttribute="bottom" constant="10" id="kHk-ip-w6c"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
