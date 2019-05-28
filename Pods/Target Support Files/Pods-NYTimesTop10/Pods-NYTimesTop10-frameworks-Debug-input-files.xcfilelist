@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-NYTimesTop10/Pods-NYTimesTop10-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
