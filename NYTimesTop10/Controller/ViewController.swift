@@ -19,7 +19,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.newsTableViewOutlet.estimatedRowHeight = self.newsTableViewOutlet.rowHeight
+        self.newsTableViewOutlet.rowHeight = UITableView.automaticDimension
         self.buildDataSource()
+        self.newsTableViewOutlet.estimatedRowHeight = self.newsTableViewOutlet.rowHeight
+        self.newsTableViewOutlet.rowHeight = UITableView.automaticDimension
     }
     
     func buildDataSource(){
@@ -61,7 +65,12 @@ class ViewController: UIViewController {
     
     func showAlert(_ message: String) -> (){
         let alert = UIAlertController(title: message, message: nil , preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: { _ in
+           self.buildDataSource()
+        }))
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+            self.newsTableViewOutlet.isHidden = true
+        }))
         self.present(alert, animated: true, completion: nil)
     }
 
@@ -82,23 +91,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! NewsTableViewCell
         if let tempNews = self.model?.results[indexPath.row]{
             cell.newsTitle.text = tempNews.title
-            cell.newsTitle.numberOfLines = 3
-            cell.newsTitle.lineBreakMode = NSLineBreakMode.byWordWrapping
-            let font = UIFont(name: "Helvetica", size: 20.0)
-            cell.newsTitle.font = font
-            cell.newsTitle.sizeToFit()
-            
-            let imageURL = URL(string: tempNews.multimedia[3].url)!
-            cell.newsImage.sd_setShowActivityIndicatorView(true)
-            cell.newsImage.sd_setIndicatorStyle(.gray)
-            cell.newsImage.sd_setImage(with: imageURL)
-            
+//            cell.newsTitle.sizeToFit()
+            if tempNews.multimedia.count >= 4{
+                let imageURL = URL(string: tempNews.multimedia[3].url)!
+                cell.newsImage.sd_setShowActivityIndicatorView(true)
+                cell.newsImage.sd_setIndicatorStyle(.gray)
+                cell.newsImage.contentMode = UIView.ContentMode.scaleAspectFit
+                //            cell.newsImage.sd_setImage(imageURL, placeholderImage:UIImage(imageNamed:"NYTimesPlaceholder.jpeg"))
+                cell.newsImage.sd_setImage(with: imageURL, placeholderImage: UIImage(named:"NYTimesPlaceholder.jpeg"))
+            }
             cell.newsDescription.text = tempNews.abstract
-            cell.newsDescription.numberOfLines = 10
-            cell.newsDescription.lineBreakMode = NSLineBreakMode.byWordWrapping
-            let temp_font = UIFont(name: "Helvetica", size: 15.0)
-            cell.newsDescription.font = temp_font
-            cell.newsDescription.sizeToFit()
+//            cell.newsDescription.sizeToFit()
             
         }
         return cell
